@@ -1,4 +1,5 @@
 # Write your code here!
+require "pry"
 
 def game_hash
 
@@ -168,18 +169,31 @@ end
 return names
 end
 
+# #def player_numbers(team)
+#   numbers = []
+#   game_hash.each do |key, value|
+#     if value[:team_name] == team
+#       players = value[:players]
+#         players.each do |stats|
+#        numbers.push(stats[:number])
+#         #binding.pry
+#       end
+#     end
+#   end
+#   return numbers
+#end
+
 def player_numbers(team)
   numbers = []
-  game_hash.each do |key, value|
-    if value[:team_name] == team
-      players = value[:players]
+  target = game_hash.find {|key, value| value[:team_name]== team}
+    players = target[0][:players]
         players.each do |stats|
         numbers.push(stats[:number])
-      end
     end
-  end
-  return numbers
+    return numbers
 end
+
+
 
 def player_stats(player)
 game_hash.each do |key, value|
@@ -207,3 +221,4 @@ game_hash.each do |key, value|
   end
   return extremal[1]
 end
+
